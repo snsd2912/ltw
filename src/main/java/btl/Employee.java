@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Driver {
+public class Employee {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
