@@ -55,13 +55,19 @@ public class CarController {
 		return "edit";
 	}
 	@PutMapping("/edit/{id}")
-	public String editCar(@PathVariable("id") Long id, @RequestBody Car carDetail, Model model) {
-		Optional<Car> car = carRepo.findById(id);
-		
-		carRepo.save(carDetail);
-		model.addAttribute(car);
-//		log.info("Ingredient saved: " + car);
-//		return "addCarSuccess";
+	public String editCar(@PathVariable("id") Long id, @RequestBody Car carRequest, Model model) {
+		/* Optional<Car> car = carRepo.findById(id); */
+		Optional<Car> car1 =carRepo.findById(id);
+		Car car = car1.get();
+		car.setBrandname(carRequest.getBrandname());
+		car.setColor(carRequest.getColor());
+		car.setModel(carRequest.getModel());
+		car.setPlatenumber(carRequest.getPlatenumber());
+		car.setSeatnumber(carRequest.getSeatnumber());
+		car.setUsedyear(carRequest.getUsedyear());
+		car.setLastmaintaincedate(carRequest.getLastmaintaincedate());
+		carRepo.save(car);
+		model.addAttribute("car", car);
 		return "redirect:/car";
 	}
 	

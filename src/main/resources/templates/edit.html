@@ -10,7 +10,7 @@
 	<form th:action="@{/car/edit/{id}}" method="PUT" th:object="${car}">
 		
 				<label>Id</label>
-				<input type="text" th:field="*{id}" value="${car.id}"/><br/>
+				<span th:text="${car.id}">id</span><br/>
 				<label>Brand Name</label>
 				<input type="text" th:field="*{brandname}"/><br/>
 				<label>Plate Number</label>
